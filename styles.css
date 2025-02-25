@@ -1,0 +1,200 @@
+/* Import a fun Google Font (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Global Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Header with a pastel blue-lavender gradient */
+header {
+  background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+  color: #fff;
+  text-align: center;
+  padding: 2em 1em;
+  margin-bottom: 20px;
+  border-bottom: 5px solid #E0C3FC;
+}
+
+header h1 {
+  margin: 0;
+  font-weight: 600;
+}
+
+nav a {
+  margin: 0 1em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main layout using a flexible auto-fit grid */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    align-items: start; /* Each item is top-aligned, so different heights won't affect the other column */
+}
+  
+/* Section styling */
+section {
+  background: #fff;
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1em;
+  color: #444;
+}
+
+/* Slider (About Me) */
+.slider {
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+
+.slides {
+  display: flex;
+}
+
+.slides img {
+  flex: none;
+  max-width: 100%;
+  height: auto;
+  scroll-snap-align: center;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Photo gallery (Travel Logs) */
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.photo-gallery img {
+  width: calc(50% - 10px);
+  border-radius: 5px;
+  filter: brightness(0.95);
+}
+
+/* Pet gallery */
+.pet-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.pet-gallery img {
+  width: calc(50% - 10px);
+  border-radius: 5px;
+}
+
+/* gmp-map styling (for Google Maps custom elements) */
+gmp-map {
+  height: 400px;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Tech News Section */
+#news-loading {
+  display: block;
+  text-align: center;
+  margin: 1rem;
+  font-style: italic;
+  color: #666;
+}
+
+#news-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* News card styling */
+.news-card {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.news-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.news-card h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.news-card p small {
+  color: #666;
+}
+
+.news-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #576CBC; /* A pleasant accent color for links */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.news-card a:hover {
+  text-decoration: underline;
+}
+
+/* Footer styling */
+footer {
+  background: #E0C3FC;
+  color: #333;
+  text-align: center;
+  padding: 1.5em 1em;
+  margin-top: 20px;
+  border-top: 5px solid #8EC5FC;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  /* The auto-fit grid will naturally stack columns, but you can reduce min-width if needed */
+  
+  .photo-gallery img,
+  .pet-gallery img {
+    width: 100%;
+  }
+  
+  #news-container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+/* Make skillset lines light gray */
+.skillset-line {
+  color: #888;  /* Gray color for the text */
+  font-style: italic;  /* Optional: makes it stand out */
+}

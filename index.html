@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yadong Hou</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include Google Maps API (replace YOUR_API_KEY if needed) -->
+  <script async 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZIwAIZGmBDOJpFhVptwH2ZzoynVTgsgM&callback=console.debug&libraries=maps,marker&v=beta">
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Yadong Hou</h1>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#experience">Work Stuff</a>
+      <a href="#travel">Travel Logs</a>
+      <a href="#pets">Pets</a>
+      <a href="#news">Tech News</a>
+    </nav>
+  </header>
+  
+  <main>
+    <!-- About Me Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hi, I'm Yadong Hou Merida! I'm a Master's student at Cornell Tech, currently based in New York.
+        I used to work and live in California. I love traveling, outdoor adventures, pets, handicrafts,
+        collecting cool stuff. I'm in the tech industry and I'm really into AI and AR/VR.
+      </p>
+      <!-- Simple Slider using CSS scroll-snap -->
+      <div class="slider">
+        <div class="slides">
+          <img src="images/about/photo1.jpg" alt="Me enjoying travel">
+          <img src="images/about/photo2.jpg" alt="Another travel moment">
+        </div>
+      </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Work Stuff</h2>
+      <ul>
+        <li>
+          <strong>Graduate Research @ Cornell Tech (Jan 2025 – Now):</strong>
+          <ul>
+            <li>Developing a medical social media app with LLM-driven features and a feedback-based agent system.</li>
+            <li class="skillset-line"><em>Skillset:</em> Python, Langchain, LLM, stable diffusion</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Graduate Research @ Cornell Tech XRC Lab (Aug – Dec 2024):</strong>
+          <ul>
+            <li>Designed a one-hand scale interaction system using hand and head tracking on the Quest platform.</li>
+            <li class="skillset-line"><em>Skillset:</em> Unity, Quest development, XR Interaction toolkit, XR hands</li>
+          </ul>
+        </li>
+        <li>
+          <strong>E-Heart (2023 – Current):</strong>
+          <ul>
+            <li>A digital therapy app offering accessible, self-help recovery tools for individuals with eating disorders.</li>
+            <li class="skillset-line"><em>Skillset:</em> Flutter, Node.js, Express, MySQL, Sequelize, Ali Cloud ECS, RDS</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Salesforce Inc (May 2022 – Aug 2023):</strong>
+          <ul>
+            <li>Worked on cloud security and distributed authentication systems, implementing automated credential rotation workflows while successfully managing service migrations across infrastructure.</li>
+            <li class="skillset-line"><em>Skillset:</em> Python, Go, Kubernetes, Docker, AWS(EKS, EC2, Route53, ELB, S3, Cloudtrail, Cloudwatch), Helm Chart, Terraform</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Apulis Technology (Mar 2021 – Feb 2022):</strong>
+          <ul>
+            <li>Worked on infra IAM team, building multi-tenant identity solutions and implementing login features role-based access control systems.</li>
+            <li class="skillset-line"><em>Skillset:</em> Java, PostgreSQL, RabbitMQ, Redis</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Amazon Inc (Jun 2020 – Sep 2020):</strong>
+          <ul>
+            <li>Developed a Python-based web portal to automate security risk assessments and created a dashboard to streamline security evaluations for hardware prototypes.</li>
+            <li class="skillset-line"><em>Skillset:</em> Python, DynamoDB, Flask</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    
+    <!-- Travel Logs Section with Photo Gallery and Interactive Map -->
+    <section id="travel">
+      <h2>Travel Logs</h2>
+      <div class="photo-gallery">
+        <img src="images/trip1.jpg" alt="Trip Photo 1">
+        <img src="images/trip2.jpg" alt="Trip Photo 2">
+      </div>
+      <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="DEMO_MAP_ID">
+        <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="Here I Am"></gmp-advanced-marker>
+      </gmp-map>
+    </section>
+    
+    <!-- Pets Section -->
+    <section id="pets">
+      <h2>Pets</h2>
+      <p>Check out my adorable cats – they're the cutest!</p>
+      <div class="pet-gallery">
+        <img src="images/cat1.jpg" alt="Cat 1">
+        <img src="images/cat2.jpg" alt="Cat 2">
+      </div>
+    </section>
+    
+    <!-- Tech Trends News Section -->
+    <section id="news">
+      <h2>Check out some Tech news 👨‍💻🔍📱</h2>
+      <div id="news-loading">Hold tight, loading news...</div>
+      <div id="news-container"></div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 My Journey: Life, Travel & Tech. All rights reserved.</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
