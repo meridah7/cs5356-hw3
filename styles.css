@@ -131,7 +131,7 @@ section h2 {
   margin-right: 10px;
 }
 
-/* Photo gallery (Travel Logs) */
+
 .photo-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -257,3 +257,12 @@ footer {
     padding: 0 1rem;
   }
 }
+
+.skillset-line {
+    color: #888; /* Gray text */
+  }
+  
+  .preview {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  

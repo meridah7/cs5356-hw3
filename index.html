@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Yadong Hou</title>
+  <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Yadong Hou - My Journey: Life, Travel & Tech" />
+    <meta property="og:description" content="Hi, I'm Yadong Hou Merida! I'm a Master's student at Cornell Tech, exploring travels, pets, and tech." />
+    <meta property="og:image" content="https://meridah7.github.io/cs5356-hw3/images/about/photo1.jpg" />
+    <meta property="og:url" content="https://meridah7.github.io/cs5356-hw3/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yadong Hou - My Journey: Life, Travel & Tech" />
+    <meta name="twitter:description" content="A glimpse into my life as a Cornell Tech grad student exploring travel, pets, and tech." />
+    <meta name="twitter:image" content="https://meridah7.github.io/cs5356-hw3/images/about/photo1.jpg" />
+
+    <!-- Apple-specific meta tags for iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <link rel="stylesheet" href="styles.css">
   <!-- Include Google Maps API (replace YOUR_API_KEY with your actual key) -->
   <script async 
@@ -14,7 +31,7 @@
     <h1>Yadong Hou</h1>
     <nav>
       <a href="#about">About Me</a>
-      <a href="#experience">Work Stuff</a>
+      <a href="experience.html">Experience</a>
       <a href="#travel">Travel Logs</a>
       <a href="#pets">Pets</a>
       <a href="#news">Tech News</a>
@@ -23,7 +40,7 @@
   
   <main>
     <!-- About Me Section -->
-    <section id="about">
+    <section id="about" class="preview">
       <h2>About Me</h2>
       <p>
         Hello, I'm Yadong Hou Merida! I'm currently pursuing my Master's at Cornell Tech and living in New York, although I previously worked and resided in California. I have a passion for travel, outdoor adventures, pets, handicrafts, and collecting unique items. Working in the tech industry, I’m deeply interested in AI and AR/VR. I originally come from Shenzhen, China.
@@ -38,8 +55,8 @@
     </section>
     
     <!-- Work Stuff Section -->
-    <section id="experience">
-      <h2>Work Stuff</h2>
+    <section id="experience" class="preview">
+      <h2>Work</h2>
       <div class="preview-content">
         <img src="images/work/work1.jpg" alt="Work Stuff Preview" class="work-preview-img">
         <p class="preview-text">
@@ -50,7 +67,7 @@
     </section>
     
     <!-- Travel Logs Section with Tabs -->
-    <section id="travel">
+    <section id="travel" class="preview">
       <h2>Travel Logs</h2>
       <div class="tabs-container center-tabs">
         <div class="tabs">
@@ -74,7 +91,7 @@
     </section>
     
     <!-- Pets Section: Multi-image slider -->
-    <section id="pets">
+    <section id="pets" class="preview">
       <h2>Pets</h2>
       <p>Check out my adorable cats – they're the cutest!</p>
       <div class="slider pets-slider">
@@ -88,8 +105,8 @@
     </section>
     
     <!-- Tech Trends News Section -->
-    <section id="news">
-      <h2>Check out some Tech news 👨‍💻🔍📱</h2>
+    <section id="news" class="preview">
+      <h2>Check out latest Tech news 👨‍💻🔍</h2>
       <div id="news-loading">Hold tight, loading news...</div>
       <div id="news-container"></div>
     </section>

@@ -1,6 +1,4 @@
-/****************
- *  Tabs logic  *
- ****************/
+
 document.addEventListener('click', e => {
     if (e.target.classList.contains('tab-btn')) {
       const parent = e.target.closest('.tabs');
@@ -26,42 +24,36 @@ document.addEventListener('click', e => {
       lng: -100.45039367675781,
       title: 'Yellowstone',
       description: 'Yellowstone National Park: Enjoy natural wonders and wildlife.',
-      image: 'images/yellowstone.jpg'
     },
     {
       lat: 37.29818344116211,
       lng: -113.02637481689453,
       title: 'Zion',
       description: 'Zion National Park: Majestic canyons and rock formations.',
-      image: 'images/zion.jpg'
     },
     {
       lat: 36.879207611083984,
       lng: -111.51039123535156,
       title: 'Horsehoe Bend',
       description: 'Horsehoe Bend: Iconic river bend with breathtaking views.',
-      image: 'images/horsehoe.jpg'
     },
     {
         lat: 36.65796661376953,
         lng: -113.04910278320312,
         title: 'My location',
         description: 'My location: A point of interest with scenic views.',
-        image: 'images/my_location.jpg'
       },
       {
         lat: 41.401859283447266,
         lng: -124.06495666503906,
         title: 'fern canyon',
         description: 'fern canyon: Iconic canyon with scenic views and unique rock formations.',
-        image: 'images/fern_canyon.jpg'
       },
       {
         lat: 42.944664001464844,
         lng: -122.10891723632812,
         title: 'My crater lake',
         description: 'My crater lake: A stunning lake surrounded by mountains, offering breathtaking scenery.',
-        image: 'images/crater_lake.jpg'
       }
     
   ];
@@ -84,7 +76,6 @@ document.addEventListener('click', e => {
         <div style="max-width:200px;">
           <h3>${loc.title}</h3>
           <p>${loc.description}</p>
-          <img src="${loc.image}" alt="${loc.title}" style="width:100%; border-radius:5px;">
         </div>
       `;
       
@@ -171,4 +162,37 @@ document.addEventListener('click', e => {
         document.getElementById('news-loading').textContent = 'Failed to load news.';
       });
   }
+
+
+document.querySelectorAll('.preview').forEach(card => {
+    card.addEventListener('mousemove', function(e) {
+      // 获取卡片的边界信息
+      const rect = card.getBoundingClientRect();
+      // 计算鼠标在卡片内的坐标
+      const offsetX = e.clientX - rect.left;
+      const offsetY = e.clientY - rect.top;
+      // 计算卡片中心点
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      // 计算鼠标与中心点的偏移
+      const deltaX = offsetX - centerX;
+      const deltaY = offsetY - centerY;
+      // 根据偏移计算旋转角度（最大10°，可根据需求调整）
+      const rotateX = (deltaY / centerY) * -7; // 垂直方向翻转
+      const rotateY = (deltaX / centerX) * 7;
+      
+      // 设置 3D 旋转效果与动态阴影
+      card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      // 阴影根据鼠标偏移变化，增强立体感
+      const shadowX = (deltaX / centerX) * 20;
+      const shadowY = (deltaY / centerY) * 20;
+      card.style.boxShadow = `${-shadowX}px ${-shadowY}px 20px rgba(0, 0, 0, 0.2)`;
+    });
+    
+    // 当鼠标离开卡片时，恢复初始效果
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg)';
+      card.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+    });
+  });
   
