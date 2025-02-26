@@ -118,6 +118,9 @@ section h2 {
   border-radius: 5px;
 }
 
+/* I discovered scroll-snap-type< enables a smooth scrolling experience by snapping the scroll position to predetermined points. This is especially useful for image sliders or galleries, ensuring a consistent and engaging user experience. */
+
+
 .slides {
   display: flex;
 }
@@ -221,10 +224,9 @@ gmp-map {
     cursor: pointer;
     transition: background 0.2s ease;
     
-    /* 移除浏览器/操作系统默认外观 */
     appearance: none;
     -webkit-appearance: none;
-    outline: none; /* 移除点击时的外框 */
+    outline: none; 
   }
   
   .see-more-btn:hover {

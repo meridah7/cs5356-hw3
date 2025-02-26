@@ -58,7 +58,7 @@ document.addEventListener('click', e => {
     
   ];
   
-  function initMap() {
+  window.initMap = function() {
     const mapOptions = {
       center: { lat: 38.0, lng: -110.0 },
       zoom: 5
@@ -82,7 +82,8 @@ document.addEventListener('click', e => {
       const infoWindow = new google.maps.InfoWindow({ content: infoWindowContent });
       marker.addListener('click', () => infoWindow.open(map, marker));
     });
-  }
+  };
+  
 
   document.addEventListener('DOMContentLoaded', () => {
     loadHackerNews();
@@ -163,33 +164,28 @@ document.addEventListener('click', e => {
       });
   }
 
-
-document.querySelectorAll('.preview').forEach(card => {
+  document.querySelectorAll('.preview').forEach(card => {
     card.addEventListener('mousemove', function(e) {
-      // 获取卡片的边界信息
       const rect = card.getBoundingClientRect();
-      // 计算鼠标在卡片内的坐标
       const offsetX = e.clientX - rect.left;
       const offsetY = e.clientY - rect.top;
-      // 计算卡片中心点
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      // 计算鼠标与中心点的偏移
       const deltaX = offsetX - centerX;
       const deltaY = offsetY - centerY;
-      // 根据偏移计算旋转角度（最大10°，可根据需求调整）
-      const rotateX = (deltaY / centerY) * -7; // 垂直方向翻转
-      const rotateY = (deltaX / centerX) * 7;
       
-      // 设置 3D 旋转效果与动态阴影
+      // 将旋转角度从 7 降低到 3
+      const rotateX = (deltaY / centerY) * -3;
+      const rotateY = (deltaX / centerX) * 3;
+      
       card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      // 阴影根据鼠标偏移变化，增强立体感
-      const shadowX = (deltaX / centerX) * 20;
-      const shadowY = (deltaY / centerY) * 20;
+      
+      // 将盒阴影乘数从 20 降低到 10
+      const shadowX = (deltaX / centerX) * 10;
+      const shadowY = (deltaY / centerY) * 10;
       card.style.boxShadow = `${-shadowX}px ${-shadowY}px 20px rgba(0, 0, 0, 0.2)`;
     });
     
-    // 当鼠标离开卡片时，恢复初始效果
     card.addEventListener('mouseleave', function() {
       card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg)';
       card.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
