@@ -1,15 +1,78 @@
-// Google Maps initialization for travel locations
-const travelLocations = [
+/****************
+ *  Tabs logic  *
+ ****************/
+document.addEventListener('click', e => {
+    if (e.target.classList.contains('tab-btn')) {
+      const parent = e.target.closest('.tabs');
+      const buttons = parent.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      
+      const section = e.target.closest('section');
+      const tabContents = section.querySelectorAll('.tab-content');
+      tabContents.forEach(tc => tc.classList.remove('active'));
+      
+      const targetId = e.target.dataset.target;
+      const targetContent = section.querySelector(`#${targetId}`);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    }
+  });
+  
+  const travelLocations = [
+    {
+      lat: 40.12150192260742,
+      lng: -100.45039367675781,
+      title: 'Yellowstone',
+      description: 'Yellowstone National Park: Enjoy natural wonders and wildlife.',
+      image: 'images/yellowstone.jpg'
+    },
+    {
+      lat: 37.29818344116211,
+      lng: -113.02637481689453,
+      title: 'Zion',
+      description: 'Zion National Park: Majestic canyons and rock formations.',
+      image: 'images/zion.jpg'
+    },
+    {
+      lat: 36.879207611083984,
+      lng: -111.51039123535156,
+      title: 'Horsehoe Bend',
+      description: 'Horsehoe Bend: Iconic river bend with breathtaking views.',
+      image: 'images/horsehoe.jpg'
+    },
+    {
+        lat: 36.65796661376953,
+        lng: -113.04910278320312,
+        title: 'My location',
+        description: 'My location: A point of interest with scenic views.',
+        image: 'images/my_location.jpg'
+      },
+      {
+        lat: 41.401859283447266,
+        lng: -124.06495666503906,
+        title: 'fern canyon',
+        description: 'fern canyon: Iconic canyon with scenic views and unique rock formations.',
+        image: 'images/fern_canyon.jpg'
+      },
+      {
+        lat: 42.944664001464844,
+        lng: -122.10891723632812,
+        title: 'My crater lake',
+        description: 'My crater lake: A stunning lake surrounded by mountains, offering breathtaking scenery.',
+        image: 'images/crater_lake.jpg'
+      }
+    
   ];
   
   function initMap() {
     const mapOptions = {
-      center: { lat: 40.0, lng: -20.0 },
-      zoom: 2
+      center: { lat: 38.0, lng: -110.0 },
+      zoom: 5
     };
     const map = new google.maps.Map(document.getElementById('map'), mapOptions);
   
-    // Add markers and info windows for each travel location
     travelLocations.forEach(loc => {
       const marker = new google.maps.Marker({
         position: { lat: loc.lat, lng: loc.lng },
@@ -25,27 +88,19 @@ const travelLocations = [
         </div>
       `;
       
-      const infoWindow = new google.maps.InfoWindow({
-        content: infoWindowContent
-      });
-      
-      marker.addListener('click', () => {
-        infoWindow.open(map, marker);
-      });
+      const infoWindow = new google.maps.InfoWindow({ content: infoWindowContent });
+      marker.addListener('click', () => infoWindow.open(map, marker));
     });
   }
-  
-  /* Hacker News API implementation */
+
   document.addEventListener('DOMContentLoaded', () => {
     loadHackerNews();
   });
   
   function loadHackerNews() {
-    // Fetch the top 50 front page stories from Hacker News via Algolia.
     fetch('https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=50')
       .then(response => response.json())
       .then(data => {
-        // Extended regex patterns for filtering stories.
         const regexes = [
           /\bnews\b/i,
           /\bai\b/i,
@@ -86,7 +141,6 @@ const travelLocations = [
           /\bopenep\b/i
         ];
         
-        // Filter stories: keep those whose title contains at least one of the keywords.
         const filteredStories = data.hits.filter(item => {
           if (!item.title) return false;
           const titleLower = item.title.toLowerCase();
@@ -95,11 +149,9 @@ const travelLocations = [
         
         const newsContainer = document.getElementById('news-container');
         
-        // If no stories match, display a message.
         if (filteredStories.length === 0) {
           newsContainer.innerHTML = '<p>No relevant news found.</p>';
         } else {
-          // For each filtered story, create a news card.
           filteredStories.forEach(item => {
             const card = document.createElement('div');
             card.className = 'news-card';
@@ -112,7 +164,6 @@ const travelLocations = [
           });
         }
         
-        // Hide the loading message.
         document.getElementById('news-loading').style.display = 'none';
       })
       .catch(err => {

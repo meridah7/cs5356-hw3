@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <title>Yadong Hou</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Include Google Maps API (replace YOUR_API_KEY if needed) -->
+  <!-- Include Google Maps API (replace YOUR_API_KEY with your actual key) -->
   <script async 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZIwAIZGmBDOJpFhVptwH2ZzoynVTgsgM&callback=console.debug&libraries=maps,marker&v=beta">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZIwAIZGmBDOJpFhVptwH2ZzoynVTgsgM&callback=initMap&libraries=maps,marker&v=beta">
   </script>
 </head>
 <body>
@@ -26,9 +26,7 @@
     <section id="about">
       <h2>About Me</h2>
       <p>
-        Hi, I'm Yadong Hou Merida! I'm a Master's student at Cornell Tech, currently based in New York.
-        I used to work and live in California. I love traveling, outdoor adventures, pets, handicrafts,
-        collecting cool stuff. I'm in the tech industry and I'm really into AI and AR/VR.
+        Hello, I'm Yadong Hou Merida! I'm currently pursuing my Master's at Cornell Tech and living in New York, although I previously worked and resided in California. I have a passion for travel, outdoor adventures, pets, handicrafts, and collecting unique items. Working in the tech industry, I’m deeply interested in AI and AR/VR. I originally come from Shenzhen, China.
       </p>
       <!-- Simple Slider using CSS scroll-snap -->
       <div class="slider">
@@ -39,74 +37,53 @@
       </div>
     </section>
     
-    <!-- Experience Section -->
+    <!-- Work Stuff Section -->
     <section id="experience">
       <h2>Work Stuff</h2>
-      <ul>
-        <li>
-          <strong>Graduate Research @ Cornell Tech (Jan 2025 – Now):</strong>
-          <ul>
-            <li>Developing a medical social media app with LLM-driven features and a feedback-based agent system.</li>
-            <li class="skillset-line"><em>Skillset:</em> Python, Langchain, LLM, stable diffusion</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Graduate Research @ Cornell Tech XRC Lab (Aug – Dec 2024):</strong>
-          <ul>
-            <li>Designed a one-hand scale interaction system using hand and head tracking on the Quest platform.</li>
-            <li class="skillset-line"><em>Skillset:</em> Unity, Quest development, XR Interaction toolkit, XR hands</li>
-          </ul>
-        </li>
-        <li>
-          <strong>E-Heart (2023 – Current):</strong>
-          <ul>
-            <li>A digital therapy app offering accessible, self-help recovery tools for individuals with eating disorders.</li>
-            <li class="skillset-line"><em>Skillset:</em> Flutter, Node.js, Express, MySQL, Sequelize, Ali Cloud ECS, RDS</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Salesforce Inc (May 2022 – Aug 2023):</strong>
-          <ul>
-            <li>Worked on cloud security and distributed authentication systems, implementing automated credential rotation workflows while successfully managing service migrations across infrastructure.</li>
-            <li class="skillset-line"><em>Skillset:</em> Python, Go, Kubernetes, Docker, AWS(EKS, EC2, Route53, ELB, S3, Cloudtrail, Cloudwatch), Helm Chart, Terraform</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Apulis Technology (Mar 2021 – Feb 2022):</strong>
-          <ul>
-            <li>Worked on infra IAM team, building multi-tenant identity solutions and implementing login features role-based access control systems.</li>
-            <li class="skillset-line"><em>Skillset:</em> Java, PostgreSQL, RabbitMQ, Redis</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Amazon Inc (Jun 2020 – Sep 2020):</strong>
-          <ul>
-            <li>Developed a Python-based web portal to automate security risk assessments and created a dashboard to streamline security evaluations for hardware prototypes.</li>
-            <li class="skillset-line"><em>Skillset:</em> Python, DynamoDB, Flask</li>
-          </ul>
-        </li>
-      </ul>
+      <div class="preview-content">
+        <img src="images/work/work1.jpg" alt="Work Stuff Preview" class="work-preview-img">
+        <p class="preview-text">
+          My career spans roles at Salesforce, Apulis, and Amazon. Explore my professional journey in detail below.
+        </p>
+      </div>
+      <button class="see-more-btn" onclick="location.href='experience.html'">See More</button>
     </section>
     
-    <!-- Travel Logs Section with Photo Gallery and Interactive Map -->
+    <!-- Travel Logs Section with Tabs -->
     <section id="travel">
       <h2>Travel Logs</h2>
-      <div class="photo-gallery">
-        <img src="images/trip1.jpg" alt="Trip Photo 1">
-        <img src="images/trip2.jpg" alt="Trip Photo 2">
+      <div class="tabs-container center-tabs">
+        <div class="tabs">
+          <button class="tab-btn active" data-target="pictures-tab">Pictures</button>
+          <button class="tab-btn" data-target="map-tab">Map</button>
+        </div>
+        <!-- Tab content: Pictures -->
+        <div id="pictures-tab" class="tab-content active">
+          <div class="photo-gallery">
+            <img src="images/trip/trip1.jpg" alt="Trip Photo 1">
+            <img src="images/trip/trip3.jpg" alt="Trip Photo 1">
+            <img src="images/trip/trip4.jpg" alt="Trip Photo 2">
+            <img src="images/trip/trip5.jpg" alt="Trip Photo 2">
+          </div>
+        </div>
+        <!-- Tab content: Map -->
+        <div id="map-tab" class="tab-content">
+          <div id="map" style="height:400px; width:100%;"></div>
+        </div>
       </div>
-      <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="DEMO_MAP_ID">
-        <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="Here I Am"></gmp-advanced-marker>
-      </gmp-map>
     </section>
     
-    <!-- Pets Section -->
+    <!-- Pets Section: Multi-image slider -->
     <section id="pets">
       <h2>Pets</h2>
       <p>Check out my adorable cats – they're the cutest!</p>
-      <div class="pet-gallery">
-        <img src="images/cat1.jpg" alt="Cat 1">
-        <img src="images/cat2.jpg" alt="Cat 2">
+      <div class="slider pets-slider">
+        <div class="slides pets-slides">
+          <img src="images/pets/pet1.jpg" alt="Cat 1">
+          <img src="images/pets/pet4.jpg" alt="Cat 3">
+          <img src="images/pets/pet2.jpg" alt="Cat 2">
+          <img src="images/pets/pet3.jpg" alt="Cat 3">
+        </div>
       </div>
     </section>
     

@@ -38,13 +38,13 @@ nav a:hover {
 
 /* Main layout using a flexible auto-fit grid */
 main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
-    align-items: start; /* Each item is top-aligned, so different heights won't affect the other column */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  align-items: start; /* Each item is top-aligned */
 }
-  
+
 /* Section styling */
 section {
   background: #fff;
@@ -60,7 +60,56 @@ section h2 {
   color: #444;
 }
 
-/* Slider (About Me) */
+/* A short preview image for Work Stuff, for example */
+.work-preview-img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 0.5em;
+}
+
+/* Tabs container styling */
+.tabs-container {
+  margin-top: 1em;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;  /* Tabs居中 */
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.tab-btn {
+  background: #f1f1f1;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5em 1.5em;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+  transition: background 0.2s;
+}
+
+.tab-btn.active {
+  background: #576CBC;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.tab-btn:hover {
+  background: #e2e2e2;
+}
+
+/* Tab content hidden by default */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Slider (About Me, Pets) */
 .slider {
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
@@ -95,17 +144,10 @@ section h2 {
   filter: brightness(0.95);
 }
 
-/* Pet gallery */
-.pet-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+/* Pets slider */
+.pets-slider {
+  max-width: 100%;
   margin-top: 1rem;
-}
-
-.pet-gallery img {
-  width: calc(50% - 10px);
-  border-radius: 5px;
 }
 
 /* gmp-map styling (for Google Maps custom elements) */
@@ -159,7 +201,7 @@ gmp-map {
 .news-card a {
   display: inline-block;
   margin-top: 0.5rem;
-  color: #576CBC; /* A pleasant accent color for links */
+  color: #576CBC;
   text-decoration: none;
   font-weight: 500;
 }
@@ -167,6 +209,28 @@ gmp-map {
 .news-card a:hover {
   text-decoration: underline;
 }
+
+.see-more-btn {
+    margin-top: 1rem;
+    background: linear-gradient(135deg, #8EC5FC 0%, #576CBC 100%);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5em 1.5em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    
+    /* 移除浏览器/操作系统默认外观 */
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none; /* 移除点击时的外框 */
+  }
+  
+  .see-more-btn:hover {
+    background: linear-gradient(135deg, #7faefc 0%, #465BB3 100%);
+  }
+  
 
 /* Footer styling */
 footer {
@@ -180,10 +244,11 @@ footer {
 
 /* Responsive for smaller screens */
 @media (max-width: 768px) {
-  /* The auto-fit grid will naturally stack columns, but you can reduce min-width if needed */
+  main {
+    grid-template-columns: 1fr;
+  }
   
-  .photo-gallery img,
-  .pet-gallery img {
+  .photo-gallery img {
     width: 100%;
   }
   
@@ -191,10 +256,4 @@ footer {
     max-width: 100%;
     padding: 0 1rem;
   }
-}
-
-/* Make skillset lines light gray */
-.skillset-line {
-  color: #888;  /* Gray color for the text */
-  font-style: italic;  /* Optional: makes it stand out */
 }
