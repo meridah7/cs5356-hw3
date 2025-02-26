@@ -90,7 +90,7 @@ document.addEventListener('click', e => {
   });
   
   function loadHackerNews() {
-    fetch('https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=50')
+    fetch('https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=100')
       .then(response => response.json())
       .then(data => {
         const regexes = [
@@ -174,13 +174,11 @@ document.addEventListener('click', e => {
       const deltaX = offsetX - centerX;
       const deltaY = offsetY - centerY;
       
-      // 将旋转角度从 7 降低到 3
       const rotateX = (deltaY / centerY) * -3;
       const rotateY = (deltaX / centerX) * 3;
       
       card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       
-      // 将盒阴影乘数从 20 降低到 10
       const shadowX = (deltaX / centerX) * 10;
       const shadowY = (deltaY / centerY) * 10;
       card.style.boxShadow = `${-shadowX}px ${-shadowY}px 20px rgba(0, 0, 0, 0.2)`;
